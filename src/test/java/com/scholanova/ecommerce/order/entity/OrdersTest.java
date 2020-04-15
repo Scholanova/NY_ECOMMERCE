@@ -2,15 +2,27 @@ package com.scholanova.ecommerce.order.entity;
 
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.junit.jupiter.MockitoExtension;
+
+import java.util.Calendar;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-@Disabled
+@ExtendWith(MockitoExtension.class)
 class OrdersTest {
 
     @Test
     public void checkout_ShouldSetTheDateAndTimeOfTodayInTheOrder(){
-
+        //given
+        Orders order = new Orders();
+        Calendar calendar = Calendar.getInstance();
+        java.util.Date dateOfToday = calendar.getTime();
+        java.sql.Date date = new java.sql.Date(dateOfToday.getTime());
+        //when
+        order.checkout();
+        //then
+        // assertThat(order.getIssueDate()).isEqualTo(date);
     }
 
     @Test
